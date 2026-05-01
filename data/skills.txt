@@ -1,0 +1,10 @@
+python
+java
+machine learning
+data science
+sql
+excel
+pandas
+numpy
+tensorflow
+communication
