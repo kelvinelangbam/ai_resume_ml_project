@@ -12,7 +12,7 @@ model = pickle.load(open("models/model.pkl", "rb"))
 tfidf = pickle.load(open("models/tfidf.pkl", "rb"))
 encoder = pickle.load(open("models/encoder.pkl", "rb"))
 
-st.title("📄 AI Resume Screening System (DS + ML)")
+st.title("📄 AI-Powered Resume Screening & Job Matching System")
 
 file = st.file_uploader("Upload Resume", type="pdf")
 job_desc = st.text_area("Paste Job Description")

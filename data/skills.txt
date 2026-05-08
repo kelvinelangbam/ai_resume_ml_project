@@ -1,10 +1,18 @@
 python
-java
-machine learning
-data science
 sql
-excel
+machine learning
+deep learning
+nlp
+data science
 pandas
 numpy
+matplotlib
 tensorflow
-communication
+keras
+pytorch
+power bi
+tableau
+excel
+scikit learn
+streamlit
+flask
