@@ -1,17 +1,18 @@
 import PyPDF2
 
-def extract_text(file):
+def extract_text(uploaded_file):
     text = ""
 
     try:
-        reader = PyPDF2.PdfReader(file)
-        for page in reader.pages:
-            page_text = page.extract_text()
-            if page_text:
-                text += page_text + "\n"
-    except Exception as e:
-        print("Error:", e)
-        return ""
+        pdf_reader = PyPDF2.PdfReader(uploaded_file)
 
-    text = text.replace("\n", " ")
-    return text.strip()
+        for page in pdf_reader.pages:
+            page_text = page.extract_text()
+
+            if page_text:
+                text += page_text + " "
+
+        return text.strip()
+
+    except Exception:
+        return ""
