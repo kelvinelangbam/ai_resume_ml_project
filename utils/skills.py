@@ -1,7 +1,7 @@
 import re
 
 def load_skills():
-    with open("data/skills.txt") as f:
+    with open("data/skills.txt", encoding="utf-8") as f:
         return [s.strip().lower() for s in f.readlines()]
 
 def extract_skills(text, skills):
@@ -12,6 +12,7 @@ def extract_skills(text, skills):
 
     for skill in skills:
         pattern = r'\b' + re.escape(skill) + r'\b'
+
         if re.search(pattern, text):
             found.append(skill)
 
