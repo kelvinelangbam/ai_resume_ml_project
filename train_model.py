@@ -33,48 +33,55 @@ resumes = [
 
     # Nurse
     "nursing patient care hospital emergency medical health monitoring",
-    "clinical care patient treatment hospital ward assistance"
-    
-    
+    "clinical care patient treatment hospital ward assistance",
+
     # Artificial Intelligence
     "tensorflow pytorch deep learning neural networks ai machine learning",
     "generative ai llm transformers nlp computer vision prompt engineering",
     "artificial intelligence ai models deep learning python tensorflow",
     "chatbot development llm ai applications machine learning"
-    
 ]
 
+# ---------------- LABELS ----------------
 labels = [
+    # Data Science
     "Data Scientist",
     "Data Scientist",
     "Data Scientist",
 
+    # Web Dev
     "Web Developer",
     "Web Developer",
     "Web Developer",
 
+    # HR
     "HR",
     "HR",
 
+    # DevOps
     "DevOps Engineer",
     "DevOps Engineer",
 
+    # Data Analyst
     "Data Analyst",
     "Data Analyst",
 
+    # CA
     "Chartered Accountant",
     "Chartered Accountant",
 
+    # Nurse
     "Registered Nurse",
-    "Registered Nurse"
-    
+    "Registered Nurse",
+
+    # AI Engineer
     "AI Engineer",
     "AI Engineer",
     "AI Engineer",
     "AI Engineer"
 ]
 
-# ---------------- TRAIN MODEL ----------------
+# ---------------- TF-IDF ----------------
 tfidf = TfidfVectorizer(
     max_features=5000,
     ngram_range=(1, 2)
@@ -82,8 +89,8 @@ tfidf = TfidfVectorizer(
 
 X = tfidf.fit_transform(resumes)
 
+# ---------------- MODEL ----------------
 model = LogisticRegression(max_iter=1000)
-
 model.fit(X, labels)
 
 # ---------------- SAVE MODEL ----------------
@@ -92,4 +99,4 @@ os.makedirs("models", exist_ok=True)
 pickle.dump(model, open("models/model.pkl", "wb"))
 pickle.dump(tfidf, open("models/tfidf.pkl", "wb"))
 
-print("✅ Model recreated successfully!")
+print("Model retrained successfully")
