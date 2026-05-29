@@ -3,3 +3,5 @@ scikit-learn
 pandas
 nltk
 PyPDF2
+fpdf
+openpyxl
