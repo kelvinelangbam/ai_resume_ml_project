@@ -1,56 +1,48 @@
 # AI Resume Screening System
 
-An AI-based Resume Screening System that analyzes resumes and matches candidates based on skills and job requirements using Machine Learning techniques.
+AI Resume Screening System is a machine learning based web application that helps automate the resume screening process. The system analyzes resumes, predicts candidate job roles, calculates ATS scores, and ranks candidates based on job description matching.
 
 ## Features
 
-* Resume upload
-* Skill extraction
-* Resume classification
-* Candidate ranking
-* Machine Learning-based screening
-* Streamlit web interface
+* Upload PDF resumes
+* Resume text extraction
+* ATS score calculation
+* Skill matching
+* Resume ranking
+* Job role prediction
+* AI-based feedback
+* PDF and Excel report generation
 
 ## Technologies Used
 
 * Python
 * Streamlit
-* scikit-learn
+* Scikit-learn
 * Pandas
-* NumPy
+* NLTK
+* PyPDF2
 
-## Project Structure
+## Machine Learning Techniques
 
-```bash
-ai_resume_ml_project/
-│── data/
-│── models/
-│── utils/
-│── app.py
-│── train_model.py
-│── requirements.txt
-│── README.md
-```
-
-## Installation
-
-```bash
-pip install -r requirements.txt
-```
+* TF-IDF Vectorization
+* Logistic Regression
+* Cosine Similarity
+* NLP Text Preprocessing
 
 ## Run the Project
 
-```bash
+```bash id="v7vbb5"
+pip install -r requirements.txt
 streamlit run app.py
 ```
 
 ## Future Improvements
 
-* NLP-based resume analysis
-* Job description matching
-* PDF resume parsing
+* OCR support for scanned resumes
+* Larger training dataset
+* Advanced NLP models
 * Cloud deployment
 
 ## Author
 
-Kelvin Elangbam
+Elangbam Kelvin
