@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 
 try:
     stop_words = set(stopwords.words('english'))
-except:
+except LookupError:
     nltk.download('stopwords')
     stop_words = set(stopwords.words('english'))
 
