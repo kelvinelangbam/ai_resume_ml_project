@@ -1,44 +1,95 @@
-import pandas as pd
 import pickle
-
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
-from utils.text_processing import preprocess
+# ---------------- SAMPLE DATA ----------------
+resumes = [
+    # Data Science
+    "python machine learning data science pandas numpy ai model training",
+    "tensorflow pytorch deep learning neural networks ai model",
+    "data analysis visualization statistics pandas numpy ml",
 
-# Load dataset
-df = pd.read_csv("data/UpdatedResumeDataSet.csv")
-df = df[['Resume', 'Category']]
-df.dropna(inplace=True)
+    # Web Dev
+    "html css javascript react frontend backend web development api",
+    "react angular vue frontend ui ux design web apps",
+    "nodejs express mongodb backend api development",
 
-# Preprocess
-df['Resume'] = df['Resume'].apply(preprocess)
+    # HR
+    "hr recruitment hiring onboarding employee management communication",
+    "talent acquisition interview scheduling payroll hr policies",
 
-# Encode labels
-le = LabelEncoder()
-df['Category'] = le.fit_transform(df['Category'])
+    # DevOps
+    "aws docker kubernetes ci cd pipeline cloud devops linux",
+    "jenkins automation deployment server monitoring cloud engineer",
 
-# TF-IDF
-tfidf = TfidfVectorizer(max_features=5000, ngram_range=(1,2))
-X = tfidf.fit_transform(df['Resume'])
-y = df['Category']
+    # Data Analyst
+    "sql excel power bi tableau data visualization dashboard reporting",
+    "business intelligence analytics charts reports insights",
 
-# Split
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    # CA
+    "accounting gst taxation audit finance balance sheet tds income tax",
+    "chartered accountant ledger financial statements compliance",
+
+    # Nurse
+    "nursing patient care hospital emergency medical health monitoring",
+    "clinical care patient treatment hospital ward assistance"
+    
+    
+    # Artificial Intelligence
+    "tensorflow pytorch deep learning neural networks ai machine learning",
+    "generative ai llm transformers nlp computer vision prompt engineering",
+    "artificial intelligence ai models deep learning python tensorflow",
+    "chatbot development llm ai applications machine learning"
+    
+]
+
+labels = [
+    "Data Scientist",
+    "Data Scientist",
+    "Data Scientist",
+
+    "Web Developer",
+    "Web Developer",
+    "Web Developer",
+
+    "HR",
+    "HR",
+
+    "DevOps Engineer",
+    "DevOps Engineer",
+
+    "Data Analyst",
+    "Data Analyst",
+
+    "Chartered Accountant",
+    "Chartered Accountant",
+
+    "Registered Nurse",
+    "Registered Nurse"
+    
+    "AI Engineer",
+    "AI Engineer",
+    "AI Engineer",
+    "AI Engineer"
+]
+
+# ---------------- TRAIN MODEL ----------------
+tfidf = TfidfVectorizer(
+    max_features=5000,
+    ngram_range=(1, 2)
 )
 
-# Train
+X = tfidf.fit_transform(resumes)
+
 model = LogisticRegression(max_iter=1000)
-model.fit(X_train, y_train)
 
-print("Accuracy:", model.score(X_test, y_test))
+model.fit(X, labels)
 
-# Save
+# ---------------- SAVE MODEL ----------------
+os.makedirs("models", exist_ok=True)
+
 pickle.dump(model, open("models/model.pkl", "wb"))
 pickle.dump(tfidf, open("models/tfidf.pkl", "wb"))
-pickle.dump(le, open("models/encoder.pkl", "wb"))
 
-print("Model saved successfully!")
+print("✅ Model recreated successfully!")
